@@ -1,7 +1,32 @@
-<?php require('includes/config.php');
+<?php require('includes/config.php'); 
 
-//if logged in redirect to members page
-if( $user->is_logged_in() ){ header('Location: memberpage.php'); }
+//if not logged in redirect to login page
+if(!$user->is_logged_in()){ header('Location: login.php'); } 
+
+//define page title
+$title = 'Members Page';
+
+//include header template
+require('layout/header.php'); 
+?>
+
+<div class="container">
+
+	<div class="row">
+
+	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			
+				<h2>Member only page - Welcome <?php echo $_SESSION['username']; ?></h2>
+				<p><a href='logout.php'>Logout</a></p>
+				<hr>
+
+		</div>
+	</div>
+
+
+</div>
+
+<?php
 
 //if form has been submitted process it
 if(isset($_POST['submit'])){
@@ -83,7 +108,7 @@ if(isset($_POST['submit'])){
 			$mail->send();
 
 			//redirect to index page
-			header('Location: index.php?action=joined');
+			header('Location: memberpage.php?action=joined');
 			exit;
 
 		//else catch the exception and show the error.
@@ -109,8 +134,8 @@ require('layout/header.php');
 
 	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 			<form role="form" method="post" action="" autocomplete="off">
-				<h2>Please Sign Up</h2>
-				<p>Already a member? <a href='login.php'>Login</a></p>
+				<h2>Add New Admin</h2>
+				
 				<hr>
 
 				<?php
@@ -158,4 +183,11 @@ require('layout/header.php');
 <?php
 //include header template
 require('layout/footer.php');
+?>
+
+
+
+<?php 
+//include header template
+require('layout/footer.php'); 
 ?>

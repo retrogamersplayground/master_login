@@ -3,7 +3,7 @@
 require_once('includes/config.php');
 
 //check if already logged in move to home page
-if( $user->is_logged_in() ){ header('Location: index.php'); } 
+if( $user->is_logged_in() ){ header('Location: memberpage.php'); } 
 
 //process login form if submitted
 if(isset($_POST['submit'])){
@@ -37,7 +37,7 @@ require('layout/header.php');
 	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 			<form role="form" method="post" action="" autocomplete="off">
 				<h2>Please Login</h2>
-				<p><a href='./'>Back to home page</a></p>
+				
 				<hr>
 
 				<?php
